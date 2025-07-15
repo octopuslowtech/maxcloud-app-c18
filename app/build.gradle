@@ -1,0 +1,126 @@
+
+
+plugins {
+    id('com.android.application')
+    id('com.google.gms.google-services')
+}
+
+
+static def generateTime() {
+    return new Date().format("yy.MM.dd_HH_mm")
+}
+
+android {
+    namespace 'com.maxcloud.app'
+
+    defaultConfig {
+        applicationId "com.maxcloud.app"
+
+        versionCode 1
+        versionName 'debug'
+
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_STL=c++_shared'
+                abiFilters "armeabi-v7a", "arm64-v8a"
+//                , "x86", "x86_64"
+
+            }
+        }
+
+        packagingOptions {
+            pickFirst '**/libc++_shared.so'
+            exclude "/lib/x86/*"
+            exclude "/lib/x86_64/*"
+//            exclude "/lib/armeabi-v7a/*"
+
+            jniLibs {
+                useLegacyPackaging = true // must be true | false for test
+            }
+        }
+    }
+
+
+    buildFeatures {
+        prefab = true
+        buildConfig true
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+
+
+    lint {
+        checkReleaseBuilds false
+    }
+
+    signingConfigs {
+        release {
+            def signingPropsFile = rootProject.file("signing.properties")
+            if (signingPropsFile.exists()) {
+                def signingProps = new Properties()
+                signingProps.load(new FileInputStream(signingPropsFile))
+
+                storeFile = file(signingProps['storeFile'])
+                storePassword = signingProps['storePassword']
+                keyAlias = signingProps['keyAlias']
+                keyPassword = signingProps['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    android {
+        applicationVariants.all { variant ->
+            if (variant.buildType.name == "release") {
+
+                variant.outputs.all { output ->
+                    def versionName = generateTime()
+                    output.versionNameOverride = versionName
+                    outputFileName = "MCP_v${versionName}.apk"
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(':Keyboard')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.activity:activity:1.9.1'
+
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation 'com.google.firebase:firebase-database'
+
+    implementation 'com.elvishew:xlog:1.11.1'
+
+    implementation 'io.github.florent37:shapeofview:1.4.7'
+
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    implementation 'com.google.zxing:core:3.4.1'
+
+    implementation 'com.github.getActivity:Toaster:12.6'
+
+    implementation 'com.iqiyi.xcrash:xcrash-android-lib:3.0.0'
+    implementation 'com.github.getActivity:XXPermissions:20.0'
+
+    implementation 'com.github.MarsadMaqsood:StylishDialogs:0.1.10'
+    implementation group: 'com.apachat', name: 'circularbutton-android', version: '1.0.3'
+
+    implementation('com.jaredrummler:android-device-names:2.1.1')
+}

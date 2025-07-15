@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.maxcloud.app",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 1,
+      "versionName": "25.06.26_14_14",
+      "outputFile": "MCP_v25.06.26_14_14.apk"
+    }
+  ],
+  "elementType": "File"
+}

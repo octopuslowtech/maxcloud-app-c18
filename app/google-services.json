@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "843124660358",
+    "firebase_url": "https://phonefarm2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "phonefarm2",
+    "storage_bucket": "phonefarm2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843124660358:android:2f30c6f5f1b161a07b1907",
+        "android_client_info": {
+          "package_name": "com.maxcloud.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj9gx0BlSBPcicqcGscjBEbLAcC47pEhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843124660358:android:ea164ed25bb7c3d97b1907",
+        "android_client_info": {
+          "package_name": "vn.bobsoftware.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj9gx0BlSBPcicqcGscjBEbLAcC47pEhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843124660358:android:0df50b6a726593b57b1907",
+        "android_client_info": {
+          "package_name": "vn.octopus.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj9gx0BlSBPcicqcGscjBEbLAcC47pEhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ONOX</string>
+    <string name="app_name_full">ONOX</string>
+    <string name="app_desc">onox system</string>
+    <string name="notification_channel_name">onox is running</string>
+    <string name="notification_channel_description">Stop Action</string>
+    <string name="start_recording">Start Recording</string>
+    <string name="stop_recording">Stop Recording</string>
+</resources>
